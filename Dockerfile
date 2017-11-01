@@ -48,11 +48,6 @@ RUN chmod 0755 /usr/local/bin/docker-entrypoint
 USER root
 
 RUN cd /usr/share/logstash && logstash-plugin install logstash-filter-translate
-#       git clone https://github.com/logstash-plugins/logstash-filter-translate.git && \
-#       cd logstash-filter-translate && \
-#       gem build logstash-filter-translate.gemspec && \
-#       logstash-plugin install ./logstash-filter-translate-* .gem
-
 
 EXPOSE 9600 5044
 

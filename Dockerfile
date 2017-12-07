@@ -47,7 +47,7 @@ RUN chmod 0755 /usr/local/bin/docker-entrypoint
 
 USER root
 
-RUN cd /usr/share/logstash && logstash-plugin install logstash-filter-translate
+RUN cd /usr/share/logstash && logstash-plugin install logstash-filter-translate && logstash-plugin install logstash-filter-prune
 
 EXPOSE 9600 5044
 

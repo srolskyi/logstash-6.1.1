@@ -9,7 +9,6 @@ ENV PATH=/usr/share/logstash/bin:$PATH
 ENV JAVA_HOME /usr/lib/jvm/jre-1.8.0-openjdk
 
 # Install Java and the "which" command, which is needed by Logstash's shell
-# scripts.
 RUN yum update -y && yum install -y java-1.8.0-openjdk-devel wget which ruby git && \
 yum clean all
 

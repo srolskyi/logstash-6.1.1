@@ -32,7 +32,7 @@ RUN wget --progress=bar:force https://artifacts.elastic.co/downloads/logstash/lo
 
 # Provide a minimal configuration, so that simple invocations will provide
 # a good experience.
-ADD config/logstash.yml config/logstash.yml
+#ADD config/logstash.yml config/logstash.yml
 ADD config/log4j2.properties config/
 #ADD pipeline/default.conf pipeline/logstash.conf
 #RUN chown --recursive logstash:logstash config/ pipeline/
@@ -41,8 +41,10 @@ ADD config/log4j2.properties config/
 ENV LANG='en_US.UTF-8' LC_ALL='en_US.UTF-8'
 
 # Place the startup wrapper script.
-ADD bin/docker-entrypoint /usr/local/bin/
-RUN chmod 0755 /usr/local/bin/docker-entrypoint
+#ADD bin/docker-entrypoint /usr/local/bin/
+#RUN chmod 0755 /usr/local/bin/docker-entrypoint
+ADD bin/logstash-docker /usr/local/bin/
+RUN chmod 0755 /usr/local/bin/logstash-docker
 
 USER root
 
@@ -50,5 +52,8 @@ RUN cd /usr/share/logstash && logstash-plugin install logstash-filter-translate 
 
 EXPOSE 9600 5044
 
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
+#ENTRYPOINT ["/usr/local/bin/docker-entrypoint"]
+
+CMD [ "/bin/bash", "/usr/local/bin/logstash-docker" ]
+
 

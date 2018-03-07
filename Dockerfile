@@ -46,7 +46,7 @@ RUN chmod 0755 /usr/local/bin/docker-entrypoint
 
 USER root
 
-RUN cd /usr/share/logstash && logstash-plugin install logstash-filter-translate && logstash-plugin install logstash-filter-prune
+RUN cd /usr/share/logstash && logstash-plugin install logstash-filter-translate && logstash-plugin install logstash-filter-prune && logstash-plugin install x-pack
 
 EXPOSE 9600 5044
 
